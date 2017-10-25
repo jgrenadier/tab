@@ -1,0 +1,35 @@
+<h1>Notes</h1>
+<button class="btn btn-primary" (click)="add()">Add</button>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+            <th>id</th>
+            <th>groupname</th>
+            <th>owner</th>			
+            <th>url</th>
+            <th>comment</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+        <tr *ngFor="let note of notes | async">
+            <td>{{ note?.id }}</td>
+            <td>{{ note?.groupname }}</td>
+            <td>{{ note?.owner }}</td>		
+            <td>{{ note?.urli }}</td>
+            <td>{{ note?.comment }}</td>	
+			<td>                
+                <a [routerLink]="['/add', note.$key]">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+
+			</td>
+			<td>
+                <a>
+                    <i (click)="delete(note)" class="glyphicon glyphicon-remove"></i>
+                </a>
+            </td>
+		</tr>
+	</tbody>
+</table>

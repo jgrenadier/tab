@@ -1,0 +1,38 @@
+<h1>{{ title }}</h1>
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-group">
+                <label for="comment">Comment</label>
+                <input [(ngModel)]="note.comment" class="form-control" type="text"
+                        formControlName="comment" value={{(item|async)?.comment}}>
+                <div *ngIf="form.controls.comment.errors">        
+                    <div *ngIf="form.controls.comment.errors.required">comment is required.</div>
+                </div>       
+    </div>  
+    <div class="form-group">
+        <label for="urli">url</label>
+        <input [(ngModel)]="note.urli" class="form-control" type="text"
+                        formControlName="urli" value={{(item|async)?.urli}}>
+        <div *ngIf="form.controls.urli.errors">        
+            <div *ngIf="form.controls.urli.errors.required" 
+                            class="alert alert-danger">url is required.</div>
+        </div>       
+    </div> 
+    <div class="form-group">
+        <label for="groupname">Groupname</label>
+        <input [(ngModel)]="note.groupname" type="text" class="form-control" 
+            formControlName="groupname" value={{(item|async)?.groupname}}>
+        <div *ngIf=" 
+                    !form.controls.groupname.valid" class="alert alert-danger">Groupname is required</div>  
+    </div>
+    <div class="form-group">
+        <label for="owner">Owner</label>
+       <input [(ngModel)]="note.owner" class="form-control" type="text"
+            formControlName="owner" value={{(item|async)?.owner}}>
+        <div *ngIf="form.controls.owner.errors">        
+    	     <div *ngIf="form.controls.owner.errors.required" 
+                class="alert alert-danger">Owner is required.</div>
+        </div>       
+    </div>  
+    
+   <button [disabled]="!form.valid" class="btn btn-primary"  type="submit">Apply</button>
+</form>

@@ -1,14 +1,19 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
-
-//
-// jag : firebase imports
-//
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database'; 
-
 import { AppComponent } from './app.component';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+import { routing } from './app.routing';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { NoteFormComponent } from './note-form.component';
+// import { HttpModule } from '@angular/http';
+
+
+import { NoteComponent } from './note.component';
+
 
 //
 // jag: details to access this particular firebase database
@@ -24,16 +29,16 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NoteComponent,
+    NoteFormComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule,
-    //
-    // jag: initialize the modules for firebase
-    //
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]
