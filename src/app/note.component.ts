@@ -20,7 +20,7 @@ export class NoteComponent {
         
          
          this.notes = this.db.list('/').valueChanges();        
-         console.log(this.notes);    
+         console.log(this.notes);     
     }
 
     add(){
