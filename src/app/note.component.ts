@@ -16,7 +16,7 @@ export class NoteComponent {
   
 
 
-    ngOnInit(){
+    ngOnInit(){ 
         
          
          this.notes = this.db.list('/').valueChanges();        
